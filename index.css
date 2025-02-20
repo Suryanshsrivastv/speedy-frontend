@@ -119,6 +119,8 @@ body {
   font-size: 1.4rem;
   font-weight: 700;
   color: #2c3e50;
+  min-width: 100px;
+  text-align: right;
 }
 
 .detail .unit-label {
@@ -234,4 +236,28 @@ body {
 .wave-icon:hover path {
   filter: drop-shadow(0 0 2px #E50914);
   transition: filter 0.3s ease;
+}
+
+/* Skeleton loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.fetching {
+  background: linear-gradient(90deg, 
+    #f0f0f0 25%, 
+    #e0e0e0 50%, 
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+  color: transparent;
+  display: inline-block;
+  min-width: 80px;
 }

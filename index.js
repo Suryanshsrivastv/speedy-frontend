@@ -29,22 +29,34 @@ document.addEventListener('DOMContentLoaded', () => {
 // Main speed test flow
 function startSpeedTest() {
     console.log("speed test started");
-    // loaderModal.classList.remove("hidden");
+    loaderModal.classList.remove("hidden");
+    
+    // Add fetching animation class
+    document.getElementById("uploadSpeed").classList.add("fetching");
+    document.getElementById("pingResult").classList.add("fetching");
+    document.getElementById("jitterResult").classList.add("fetching");
 
-    // Promise.all([
-    //     testDownloadSpeed(),
-    //     testUploadSpeed(),
-    //     testPing(),
-    //     testJitter()
-    // ])
-    //     .then(() => {
-    //         console.log("All tests completed");
-    //         loaderModal.classList.add("hidden");
-    //     })
-    //     .catch(err => {
-    //         console.error("Test error:", err);
-    //         loaderModal.classList.add("hidden");
-    //     });
+    Promise.all([
+        testDownloadSpeed(),
+        testUploadSpeed(),
+        testPing(),
+        testJitter()
+    ])
+    .then(() => {
+        // Remove fetching animations when all tests complete
+        document.getElementById("uploadSpeed").classList.remove("fetching");
+        document.getElementById("pingResult").classList.remove("fetching");
+        document.getElementById("jitterResult").classList.remove("fetching");
+        loaderModal.classList.add("hidden");
+    })
+    .catch(err => {
+        console.error("Test error:", err);
+        // Remove fetching animations and show error state
+        document.getElementById("uploadSpeed").classList.remove("fetching");
+        document.getElementById("pingResult").classList.remove("fetching");
+        document.getElementById("jitterResult").classList.remove("fetching");
+        loaderModal.classList.add("hidden");
+    });
 }
 
 // Download Speed
@@ -71,27 +83,25 @@ function testDownloadSpeed() {
 
 function testUploadSpeed() {
     console.log("upload speed test started");
-    fetch('50MB_file.bin')
-        .then(response => response.blob())
-        .then(blob => {
-            const formdata = new FormData();
-            formdata.append("file", blob, "50MB_file.bin");
+    const fileSize = 39 * 1024 * 1024;
+    const blob = new Blob([new ArrayBuffer(fileSize)], { type: 'application/octet-stream' });
+    
+    const formData = new FormData();
+    formData.append("file", blob, "test.bin");
 
-            const requestOptions = {
-                method: "POST",
-                body: formdata,
-                redirect: "follow"
-            };
+    const requestOptions = {
+        method: "POST",
+        body: formData
+    };
 
-            return fetch(uploadUrl, requestOptions);
-        })
+    return fetch(uploadUrl, requestOptions)
         .then(response => response.json())
         .then(data => {
             console.log(data);
             document.getElementById("uploadSpeed").innerText = Number(data.value).toFixed(2);
         })
         .catch(error => {
-            document.getElementById("uploadSpeed").innerText = `Error: ${error}`;
+            document.getElementById("uploadSpeed").innerText = "Error";
             console.error("Upload test error:", error);
         })
         .finally(() => {
