@@ -8,6 +8,7 @@ const startTestBtn = document.getElementById("startTest");
 const toggleInfoBtn = document.getElementById("toggleInfoBtn");
 const detailsSection = document.getElementById("detailsSection");
 const fileInput = document.getElementById("fileInput");
+const loaderModal = document.getElementById("loaderModal");
 
 
 const downloadUrl = "https://speedy-backend-yzmp.onrender.com/api/speed/download";
@@ -27,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Main speed test flow
 function startSpeedTest() {
-    // 1) Download speed test
-    // console.log("speed test started");
+    console.log("speed test started");
+    // loaderModal.classList.remove("hidden");
 
     // Promise.all([
     //     testDownloadSpeed(),
@@ -38,9 +39,11 @@ function startSpeedTest() {
     // ])
     //     .then(() => {
     //         console.log("All tests completed");
+    //         loaderModal.classList.add("hidden");
     //     })
     //     .catch(err => {
     //         console.error("Test error:", err);
+    //         loaderModal.classList.add("hidden");
     //     });
 }
 
@@ -60,6 +63,9 @@ function testDownloadSpeed() {
         .catch(error => {
             downloadSpeedEl.textContent = "Error";
             throw error;
+        })
+        .finally(() => {
+            loaderModal.classList.add("hidden");
         });
 }
 
@@ -87,6 +93,9 @@ function testUploadSpeed() {
         .catch(error => {
             document.getElementById("uploadSpeed").innerText = `Error: ${error}`;
             console.error("Upload test error:", error);
+        })
+        .finally(() => {
+            loaderModal.classList.add("hidden");
         });
 }
 
@@ -96,11 +105,16 @@ function testPing() {
     fetch(pingUrl)
         .then(response => response.text())
         .then(data => {
-            pingResultEl.textContent = data;
+            // Extract only the numbers from the response
+            const pingValue = data.match(/\d+\.?\d*/)[0];
+            pingResultEl.textContent = pingValue;
         })
         .catch(error => {
             pingResultEl.textContent = "Error";
             console.error("Ping test error:", error);
+        })
+        .finally(() => {
+            loaderModal.classList.add("hidden");
         });
 }
 
@@ -110,11 +124,16 @@ function testJitter() {
     fetch(jitterUrl)
         .then(response => response.text())
         .then(data => {
-            jitterResultEl.textContent = data;
+            // Extract only the numbers from the response
+            const jitterValue = data.match(/\d+\.?\d*/)[0];
+            jitterResultEl.textContent = jitterValue;
         })
         .catch(error => {
             jitterResultEl.textContent = "Error";
             console.error("Jitter test error:", error);
+        })
+        .finally(() => {
+            loaderModal.classList.add("hidden");
         });
 }
 

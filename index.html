@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Internet Speed Test</title>
   <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="loader.css" />
 </head>
+
 <body>
 
   <!-- Header with FAST logo -->
@@ -12,13 +15,23 @@
     <div class="logo">
       <!-- Red wave icon (SVG) and "FAST" text -->
       <svg width="50" height="40" viewBox="0 0 64 64" class="wave-icon">
-        <path fill="#E50914" d="M2,32a30,30,0,0,1,60,0h-4A26,26,0,0,0,6,32Z"/>
-        <path fill="#E50914" d="M14,32a18,18,0,0,1,36,0h-4a14,14,0,0,0-28,0Z"/>
-        <path fill="#E50914" d="M26,32a6,6,0,0,1,12,0h-4a2,2,0,0,0-4,0Z"/>
+        <!-- Main lightning bolt -->
+        <path class="main-bolt" fill="#FFD700" d="M38,5 L26,28 L34,28 L20,59 L44,28 L36,28 L48,5 Z" />
+        <!-- Secondary lightning strikes -->
+        <path class="side-bolt left" fill="#FFD700" d="M15,20 L10,32 L14,32 L8,45 L20,32 L16,32 L21,20 Z"
+          opacity="0.7" />
+        <path class="side-bolt right" fill="#FFD700" d="M54,20 L49,32 L53,32 L47,45 L59,32 L55,32 L60,20 Z"
+          opacity="0.7" />
+        <!-- Small spark effects -->
+        <path class="spark" fill="#FFD700" d="M30,15 L27,20 L29,20 L26,25 L31,20 L29,20 L32,15 Z" opacity="0.5" />
+        <path class="spark" fill="#FFD700" d="M40,40 L37,45 L39,45 L36,50 L41,45 L39,45 L42,40 Z" opacity="0.5" />
       </svg>
       <span>Speedy.com</span>
     </div>
   </header>
+  <div id="loaderModal" class="loader-modal hidden">
+    <div class="loader"></div>
+  </div>
 
   <!-- Main speed display -->
   <div class="main-display">
@@ -34,17 +47,23 @@
   <!-- Additional details (hidden by default) -->
   <div class="details-container hidden" id="detailsSection">
     <div class="detail">
-      <span class="detail-label">Upload :</span>
+      <span class="detail-label">
+        <pre>Upload  </pre>
+      </span>
       <span class="detail-value" id="uploadSpeed">–</span>
       <span class="unit-label">Mbps</span>
     </div>
     <div class="detail">
-      <span class="detail-label">Ping</span>
+      <span class="detail-label">
+        <pre>Ping  </pre>
+      </span>
       <span class="detail-value" id="pingResult">–</span>
       <span class="unit-label">ms</span>
     </div>
     <div class="detail">
-      <span class="detail-label">Jitter</span>
+      <span class="detail-label">
+        <pre>Jitter</pre>
+      </span>
       <span class="detail-value" id="jitterResult">–</span>
       <span class="unit-label">ms</span>
     </div>
@@ -60,4 +79,5 @@
 
   <script src="index.js"></script>
 </body>
+
 </html>

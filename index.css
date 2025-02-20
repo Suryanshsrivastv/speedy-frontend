@@ -1,102 +1,237 @@
 /* Reset and base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  #downloadSpeed {
-    visibility: visible;
-    color: #000; /* Ensure text color is set */
-  }
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  /* Header */
-  .header {
-    width: 100%;
-    text-align: center;
-    padding: 20px 0;
-  }
-  
-  .logo {
-    display: inline-flex;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #000;
-  }
-  
-  .logo .wave-icon {
-    margin-right: 10px;
-  }
-  
-  /* Main speed display */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #2c3e50;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.header {
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+  margin-bottom: 40px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.logo .wave-icon {
+  margin-right: 15px;
+  transform: scale(1.2);
+}
+
+/* Main speed display */
+.main-display {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 60px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 20px;
+}
+
+.speed-number {
+  font-size: 7rem;
+  font-weight: 700;
+  color: #2c3e50;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.unit-label {
+  font-size: 1.8rem;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+/* Test button */
+.test-button {
+  margin: 30px 0;
+}
+
+.test-button button {
+  background: linear-gradient(45deg, #00c3ff, #ff4b2b);
+  color: white;
+  font-size: 1.4rem;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.test-button button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
+}
+
+/* Details container */
+.details-container {
+  background: white;
+  border-radius: 15px;
+  padding: 25px 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  margin: 20px 0;
+  width: 90%;
+  max-width: 600px;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #34495e;
+}
+
+.detail-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.detail .unit-label {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-left: 5px;
+}
+
+/* Toggle info button */
+.toggle-info {
+  color: #3498db;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: background-color 0.2s;
+  margin: 20px 0;
+}
+
+.toggle-info:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Hidden elements */
+.hidden {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
   .main-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 40px;
+    padding: 30px 40px;
   }
-  
+
   .speed-number {
-    font-size: 6rem;
-    font-weight: bold;
+    font-size: 5rem;
   }
-  
+
   .unit-label {
-    font-size: 2rem;
-    margin-top: 10px;
+    font-size: 1.5rem;
   }
-  
-  /* Test button */
-  .test-button {
-    margin: 30px 0;
-  }
-  
-  .test-button button {
-    background-color: #E50914;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .test-button button:hover {
-    background-color: #c40811;
-  }
-  
-  /* Details container (hidden by default) */
+
   .details-container {
-    margin: 20px 0;
-    transition: max-height 0.3s ease;
-    text-align: center;
+    width: 95%;
+    padding: 20px;
   }
-  
-  .detail {
-    margin: 10px 0;
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.8rem;
+  }
+
+  .speed-number {
+    font-size: 4rem;
+  }
+
+  .test-button button {
     font-size: 1.2rem;
+    padding: 12px 30px;
   }
-  
-  /* Show/Hide more info */
-  .toggle-info {
-    color: #0066c0;
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-bottom: 20px;
+}
+
+/* Lightning animation styles */
+.wave-icon .main-bolt {
+  animation: flash 2s infinite;
+}
+
+.wave-icon .side-bolt.left {
+  animation: flash 2s infinite 0.3s;
+}
+
+.wave-icon .side-bolt.right {
+  animation: flash 2s infinite 0.6s;
+}
+
+.wave-icon .spark {
+  animation: sparkle 1.5s infinite;
+}
+
+@keyframes flash {
+
+  0%,
+  100% {
+    opacity: 1;
   }
-  
-  /* Hide the details container by default */
-  .hidden {
-    display: none;
+
+  50% {
+    opacity: 0.3;
   }
-  
+
+  75% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Make the entire icon glow on hover */
+.wave-icon:hover path {
+  filter: drop-shadow(0 0 2px #E50914);
+  transition: filter 0.3s ease;
+}
