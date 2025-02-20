@@ -1,46 +1,102 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Reset and base styles */
+* {
     margin: 0;
-    background-color: #f4f4f9;
-}
-
-.container {
+    padding: 0;
+    box-sizing: border-box;
+  }
+  #downloadSpeed {
+    visibility: visible;
+    color: #000; /* Ensure text color is set */
+  }
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Header */
+  .header {
+    width: 100%;
     text-align: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
+    padding: 20px 0;
+  }
+  
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .logo .wave-icon {
+    margin-right: 10px;
+  }
+  
+  /* Main speed display */
+  .main-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+  }
+  
+  .speed-number {
+    font-size: 6rem;
+    font-weight: bold;
+  }
+  
+  .unit-label {
+    font-size: 2rem;
+    margin-top: 10px;
+  }
+  
+  /* Test button */
+  .test-button {
+    margin: 30px 0;
+  }
+  
+  .test-button button {
+    background-color: #E50914;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 12px 24px;
     border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 16px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#results {
-    margin-top: 20px;
-}
-
-p {
-    font-size: 18px;
-}
+  }
+  
+  .test-button button:hover {
+    background-color: #c40811;
+  }
+  
+  /* Details container (hidden by default) */
+  .details-container {
+    margin: 20px 0;
+    transition: max-height 0.3s ease;
+    text-align: center;
+  }
+  
+  .detail {
+    margin: 10px 0;
+    font-size: 1.2rem;
+  }
+  
+  /* Show/Hide more info */
+  .toggle-info {
+    color: #0066c0;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Hide the details container by default */
+  .hidden {
+    display: none;
+  }
+  

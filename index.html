@@ -1,29 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speed Test</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8" />
+  <title>Internet Speed Test</title>
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Internet Speed Test</h1>
-        <button id="downloadBtn">Test Download Speed</button>
-        <button id="uploadBtn">Test Upload Speed</button>
-        <button id="pingBtn">Test Ping</button>
-        <button id="jitterBtn">Test Jitter</button>
 
-        <div id="results">
-            <p id="downloadResult"></p>
-            <p id="uploadResult"></p>
-            <p id="pingResult"></p>
-            <p id="jitterResult"></p>
-        </div>
-
-        <input type="file" id="fileInput" style="display:none">
+  <!-- Header with FAST logo -->
+  <header class="header">
+    <div class="logo">
+      <!-- Red wave icon (SVG) and "FAST" text -->
+      <svg width="50" height="40" viewBox="0 0 64 64" class="wave-icon">
+        <path fill="#E50914" d="M2,32a30,30,0,0,1,60,0h-4A26,26,0,0,0,6,32Z"/>
+        <path fill="#E50914" d="M14,32a18,18,0,0,1,36,0h-4a14,14,0,0,0-28,0Z"/>
+        <path fill="#E50914" d="M26,32a6,6,0,0,1,12,0h-4a2,2,0,0,0-4,0Z"/>
+      </svg>
+      <span>Speedy.com</span>
     </div>
+  </header>
 
-    <script src="index.js"></script>
+  <!-- Main speed display -->
+  <div class="main-display">
+    <div class="speed-number" id="downloadSpeed">0</div>
+    <div class="unit-label">Mbps</div>
+  </div>
+
+  <!-- Test button -->
+  <div class="test-button">
+    <button id="startTest">Go</button>
+  </div>
+
+  <!-- Additional details (hidden by default) -->
+  <div class="details-container hidden" id="detailsSection">
+    <div class="detail">
+      <span class="detail-label">Upload :</span>
+      <span class="detail-value" id="uploadSpeed">–</span>
+      <span class="unit-label">Mbps</span>
+    </div>
+    <div class="detail">
+      <span class="detail-label">Ping</span>
+      <span class="detail-value" id="pingResult">–</span>
+      <span class="unit-label">ms</span>
+    </div>
+    <div class="detail">
+      <span class="detail-label">Jitter</span>
+      <span class="detail-value" id="jitterResult">–</span>
+      <span class="unit-label">ms</span>
+    </div>
+  </div>
+
+  <!-- Show/Hide more info -->
+  <div class="toggle-info" id="toggleInfoBtn">
+    Show more info
+  </div>
+
+  <!-- Hidden file input for upload test -->
+  <input type="file" id="fileInput" style="display: none" />
+
+  <script src="index.js"></script>
 </body>
 </html>
