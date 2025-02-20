@@ -82,7 +82,7 @@ function testDownloadSpeed() {
 
 function testUploadSpeed() {
     console.log("upload speed test started");
-    const fileSize = 39 * 1024 * 1024;
+    const fileSize = 35 * 1024 * 1024;
     const blob = new Blob([new ArrayBuffer(fileSize)], { type: 'application/octet-stream' });
     
     const formData = new FormData();
@@ -133,7 +133,6 @@ function testJitter() {
     fetch(jitterUrl)
         .then(response => response.text())
         .then(data => {
-            // Extract only the numbers from the response
             const jitterValue = data.match(/\d+\.?\d*/)[0];
             jitterResultEl.textContent = jitterValue;
         })
