@@ -1,4 +1,4 @@
-/* Reset and base styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@ body {
   align-items: center;
 }
 
-/* Header */
+
 .header {
   width: 100%;
   background-color: white;
@@ -38,7 +38,6 @@ body {
   transform: scale(1.2);
 }
 
-/* Main speed display */
 .main-display {
   background: white;
   border-radius: 20px;
@@ -62,7 +61,6 @@ body {
   font-weight: 500;
 }
 
-/* Test button */
 .test-button {
   margin: 30px 0;
 }
@@ -86,7 +84,6 @@ body {
   box-shadow: 0 5px 15px rgba(229, 9, 20, 0.3);
 }
 
-/* Details container */
 .details-container {
   background: white;
   border-radius: 15px;
@@ -129,7 +126,6 @@ body {
   margin-left: 5px;
 }
 
-/* Toggle info button */
 .toggle-info {
   color: #3498db;
   font-size: 1.1rem;
@@ -145,12 +141,10 @@ body {
   background-color: rgba(52, 152, 219, 0.1);
 }
 
-/* Hidden elements */
 .hidden {
   display: none;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .main-display {
     padding: 30px 40px;
@@ -185,7 +179,6 @@ body {
   }
 }
 
-/* Lightning animation styles */
 .wave-icon .main-bolt {
   animation: flash 2s infinite;
 }
@@ -232,13 +225,11 @@ body {
   }
 }
 
-/* Make the entire icon glow on hover */
 .wave-icon:hover path {
   filter: drop-shadow(0 0 2px #E50914);
   transition: filter 0.3s ease;
 }
 
-/* Skeleton loading animation */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
